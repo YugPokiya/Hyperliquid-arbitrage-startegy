@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  trading-bot:
+    build: .
+    container_name: hyperliquid_bot
+    restart: always
+    env_file:
+      - .env  # Reads your real secrets from the hidden .env file
+    volumes:
+      - ./logs:/app/logs
+      - ./model_checkpoints:/app/model_checkpoints
+    depends_on:
+      - mongo
+
+  # Since you mentioned using MongoDB previously
+  mongo:
+    image: mongo:latest
+    container_name: trade_db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
