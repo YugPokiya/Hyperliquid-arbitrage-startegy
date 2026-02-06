@@ -1,0 +1,47 @@
+# Use a lightweight Python version
+FROM python:3.10-slim
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Prevent Python from writing .pyc files or buffering stdout
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies (needed for some ML/Crypto libraries)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code
+COPY . .
+
+# Command to run the bot
+CMD ["python", "src/main.py"]# Use a lightweight Python version
+FROM python:3.10-slim
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Prevent Python from writing .pyc files or buffering stdout
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies (needed for some ML/Crypto libraries)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code
+COPY . .
+
+# Command to run the bot
+CMD ["python", "src/main.py"]
