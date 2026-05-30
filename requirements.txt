@@ -5,3 +5,4 @@ numpy==1.26.0
 torch==2.2.0
 hyperliquid-python-sdk  # Official community SDK if available, or just raw requests
 requests==2.31.0
+FastAPIS
