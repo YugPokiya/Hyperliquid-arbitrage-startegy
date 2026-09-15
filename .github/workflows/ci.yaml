@@ -1,8 +1,19 @@
-# name: Continuous Deployment
-# on:
-#   push:
-#     branches: [ main ]
-# jobs:
+name: Continuous Deployment
+on:
+  push:
+    branches: [ main ]
+jobs:
+
+          build:
+            runs-on: ubuntu-latest
+            steps:
+              - uses: actions/checkout@v4
+                with:
+                  fetch-depth: 0
+          
+              - name: View Dockerfile
+                run: cat Hyperliquid-arbitrage-strategy/.github/workflows/DockerFile
+
 #   build:
 #     runs-on: ubuntu-latest
 #     steps:
@@ -44,13 +55,3 @@
       #     git push https://${PAT}@github.com/YugPokiya/staging-ops.git main
 
 
-
-build:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-
-    - name: View Dockerfile
-      run: cat Hyperliquid-arbitrage-strategy/.github/workflows/DockerFile
