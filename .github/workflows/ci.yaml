@@ -12,7 +12,7 @@ jobs:
                   fetch-depth: 0
           
               - name: View Dockerfile
-                run: cat Hyperliquid-arbitrage-strategy/.github/workflows/DockerFile
+                run: cat ~/.github/workflows/DockerFile
 
 #   build:
 #     runs-on: ubuntu-latest
