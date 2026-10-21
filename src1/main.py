@@ -2,11 +2,11 @@ import asyncio
 import sys
 import os
 
-# Ensure Python can find the 'src' module
+# Ensure Python can find the local src1 modules
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.connection.ws_client import HyperLiquidWS
-from src.config import config
+from connection.ws_client import HyperLiquidWS
+from config import config
 
 async def strategy_loop(data_queue):
     """

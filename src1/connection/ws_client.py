@@ -2,7 +2,7 @@ import asyncio
 import json
 import logging
 import websockets
-from src.config import config
+from config import config
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
