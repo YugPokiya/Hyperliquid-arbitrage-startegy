@@ -28,13 +28,16 @@ jobs:
           tags: ${{ vars.DOCKER_USERNAME }}/Hyperliquid_API:${{ github.sha }}
     
 
-      # - name: Docker Image Testing
-      #   run: |
-      #     docker images
-      #     docker run --name HyperLiq -d \
-      #       -p 3000:3000
-      #       -e MONGO_URI=$MONGO_URI \
-      #       -e MONGO_USERNAME=$MONGO_USERNAME
+      - name: Docker Image Testing
+        run: |
+          docker images
+          docker run --name HyperLiq -d \
+            -p 3000:3000
+            -e MONGO_URI=$MONGO_URI \
+            -e MONGO_USERNAME=$MONGO_USERNAME \
+            -e MONGO_PASSWORD=${{secrets.MONGO_PASSWORD}} \
+            ${{ vars.DOCKER_USERNAME  }}Hyperliquid_API:${{ github.sha }}
+            
             
         
 
